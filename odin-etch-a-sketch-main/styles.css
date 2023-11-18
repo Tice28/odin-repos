@@ -1,0 +1,42 @@
+.content-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: stretch;
+    gap:0px;
+    width: 600px;
+    height: 600px;
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+}
+
+.square {
+    background-color: gray;
+    margin: 0;
+    padding: 0;
+}
+
+button , input {
+    width: 50px;
+    margin: 5px 0px;
+}
