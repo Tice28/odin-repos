@@ -1,0 +1,43 @@
+html {
+  height: 100%;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  font-size: xx-large;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+button {
+  background-color: lightskyblue;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  min-width: 100px;
+}
+
+.button-holder {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}
