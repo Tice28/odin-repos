@@ -1,0 +1,64 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: grey;
+  width: clamp(250px, 60%, 650px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  gap: 10px;
+}
+
+.display {
+  text-align: end;
+  justify-content: center;
+  font-size: 60px;
+  overflow: hidden;
+  width: clamp(200px, 50%, 600px);
+  height: 100px;
+  background-color: lightgray;
+  border: 1px solid darkslategrey;
+  border-radius: 5px;
+}
+
+.buttons {
+  margin-top: 5px;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttons > button {
+  width: 23%;
+  height: 70px;
+  border: 1px solid black;
+}
+
+.operator {
+  background-color: lightsalmon;
+}
+
+.secondary-operator {
+  background-color: lightgreen;
+}
+
+.operand {
+  background-color: lightyellow;
+}
