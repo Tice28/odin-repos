@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Pix-Elated</title>
+  </head>
+  <body>
+    <div class="img-container">
+      <img src="./img/8bitbg.gif" alt="picture" />
+      <div class="img-overlay">Pix-Elated</div>
+      <div class="img-credit">
+        Photo by
+        <a href="https://bits-and-pixels.tumblr.com/">Bits and Pixels</a>
+      </div>
+    </div>
+    <main>
+      <p>
+        This is not a real online service. Stressed out? Need a break? Join us
+        on a pixelated adventure where the only worry you'll have is choosing
+        which world to explore next. Sign up now to join us in this journey.
+        <br /><br />This is just the beginning for you.
+      </p>
+      <form id="signup_form" action="">
+        <fieldset>
+          <div style="font-size: x-large">Let's do this!</div>
+          <span>
+            <div>
+              <label for="fn">First Name</label>
+              <input type="text" name="first_name" id="fn" required />
+            </div>
+            <div>
+              <label for="ln">Last Name</label>
+              <input type="text" name="last_name" id="ln" required />
+            </div>
+          </span>
+          <span>
+            <div>
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required />
+            </div>
+            <div>
+              <label for="pn">Phone Number</label>
+              <input
+                type="tel"
+                pattern="\d{10}"
+                name="phone_number"
+                id="pn"
+                required
+              />
+            </div>
+          </span>
+          <span>
+            <div>
+              <label for="pw">Password</label>
+              <input type="password" name="password" id="pw" required />
+            </div>
+            <div>
+              <label for="cpw">Confirm Password</label>
+              <input
+                type="password"
+                name="confirm_password"
+                id="cpw"
+                required
+              />
+            </div>
+          </span>
+        </fieldset>
+      </form>
+      <footer>
+        <button type="submit" form="signup_form" id="signup_button">
+          Create Account
+        </button>
+        <span>Already have an account? <a href="#">Log in</a></span>
+      </footer>
+    </main>
+  </body>
+</html>

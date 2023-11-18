@@ -1,0 +1,145 @@
+:root {
+  /* CSS HEX */
+  --dark-purple: #242038ff;
+  --french-gray: #cac4ceff;
+  --hookers-green: #5b7b7aff;
+  --dark-cyan: #3c887eff;
+  --anti-flash-white: #ebe9ec;
+}
+
+* {
+  font-family: OCR A Std, monospace;
+}
+
+body {
+  position: absolute;
+  height: 100%;
+}
+
+@media screen and (max-width: 875px) {
+  body,
+  main,
+  fieldset > span {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    margin: 0;
+  }
+}
+body,
+main,
+fieldset > span {
+  display: flex;
+  justify-content: left;
+  align-items: start;
+  margin: 0;
+}
+
+main {
+  height: 100%;
+  flex: 3;
+  flex-direction: column;
+  gap: 50px;
+  background-color: var(--anti-flash-white);
+}
+
+main > * {
+  padding-left: 5%;
+}
+
+main > p {
+  margin-top: 20%;
+  text-align: left;
+  font-size: x-large;
+  font-weight: bold;
+  color: var(--dark-purple);
+}
+
+form {
+  color: var(--dark-purple);
+  font-weight: bold;
+  width: 95%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 0;
+  margin: 0;
+  padding-right: 0;
+  padding-bottom: 5px;
+  border-top: 1px solid var(--dark-purple);
+  border-bottom: 1px solid var(--dark-purple);
+  background-color: white;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+span > div {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+}
+
+.img-container {
+  flex: 2;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.img-container > img {
+  height: 100%;
+  width: 100%;
+}
+
+.img-overlay {
+  position: absolute;
+  text-align: center;
+  font-size: 100px;
+  font-weight: bold;
+  -webkit-text-stroke: black 1px;
+  top: 25%;
+  width: 100%;
+  height: fit-content;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.img-credit {
+  position: absolute;
+  text-align: center;
+  top: 95%;
+  width: 100%;
+  height: 10%;
+  color: white;
+}
+
+.img-credit > a {
+  color: white;
+}
+
+footer {
+  margin-bottom: 10%;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+footer > button {
+  width: 175px;
+  height: 25px;
+  background-color: var(--dark-cyan);
+  color: white;
+  border: black solid 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+footer > span > a {
+  color: var(--dark-cyan);
+}
