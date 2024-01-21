@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Tic-Tac-Toe</title>
+  </head>
+  <body>
+    <header>
+      <h1>Tic-Tac-Toe</h1>
+      <h1 class="current-turn">Player's Turn</h1>
+      <h1 class="scoreboard">Player 1: 0 | Player 2: 0</h1>
+    </header>
+
+    <div class="game-container">
+      <form id="gameForm" method="get" onsubmit="return false">
+        <h2>Game Setup</h2>
+        <label for="player1Name">Player 1 Name</label>
+        <input id="player1Name" name="player1Name" />
+        <label for="player2Name">Player 2 Name</label>
+        <input id="player2Name" name="player2Name" />
+        <button id="startBtn">Start Game</button>
+      </form>
+      <div class="board-container">
+        <button class="boardBtn" id="1"></button
+        ><button class="boardBtn" id="2"></button
+        ><button class="boardBtn" id="3"></button
+        ><button class="boardBtn" id="4"></button
+        ><button class="boardBtn" id="5"></button
+        ><button class="boardBtn" id="6"></button
+        ><button class="boardBtn" id="7"></button
+        ><button class="boardBtn" id="8"></button
+        ><button class="boardBtn" id="9"></button>
+      </div>
+      <button id="newGame">New Game</button>
+    </div>
+    <footer>
+      Click new game to start a new game or reset a game with new users.
+    </footer>
+  </body>
+</html>
