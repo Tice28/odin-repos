@@ -1,0 +1,122 @@
+:root {
+    /* CSS HEX */
+--licorice: #1c0704ff;
+--timberwolf: #e4dbd9ff;
+--rosy-brown: #cca59aff;
+--seal-brown: #4f1e07ff;
+--bole: #743b25ff;
+}
+
+body, header, .hero, #content, .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    border: 1px solid var(--timberwolf);
+    border-radius: 5px;
+    background-color: var(--seal-brown);
+    color: var(--timberwolf);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+}
+
+header, footer {
+    width: 100%;
+    background-color: var(--rosy-brown);
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+footer > div {
+    padding: 5px;
+}
+
+footer > address {
+    margin: 0 auto;
+}
+
+span {
+    float: right;
+}
+
+#content {
+    background-image: url(./Images/tavern.jpg);
+    height: 100%;
+    width: 100%;
+}
+
+.hero, .menu, .menu-container,.about-us {
+    border-radius: 5px;
+    width: 50%;
+    background-color: var(--timberwolf);
+    margin-top: 10%;
+    padding: 10px 10px;
+}
+
+
+.social-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.social-holder > a > img {
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container{
+    margin: 0;
+}
+
+
+.menu-item {
+    width: 100%;
+    margin: 5px 0px;
+    padding: 5px;
+    background-color: var(--rosy-brown);
+    border: 1px solid var(--licorice);
+}
+
+.employee-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.employee{  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    color: var(--timberwolf);
+    background-color: var(--seal-brown);
+}

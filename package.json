@@ -1,0 +1,27 @@
+{
+  "name": "restaurantpage",
+  "version": "1.0.0",
+  "description": "Odin Project Restaurant Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tice28/odin-repos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tice28/odin-repos/issues"
+  },
+  "homepage": "https://github.com/Tice28/odin-repos#readme",
+  "devDependencies": {
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "css-loader": "^6.10.0",
+    "style-loader": "^3.3.4"
+  }
+}
