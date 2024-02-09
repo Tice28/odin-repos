@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "css-loader": "^6.10.0",
+    "lodash": "^4.17.21",
+    "webpack": "^5.90.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}

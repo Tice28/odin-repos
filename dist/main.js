@@ -1,0 +1,1 @@
+(()=>{const e=document.getElementById("add-btn"),n=document.getElementById("content");console.log(e),console.log(n),e.addEventListener("click",(()=>{const e=document.createElement("div");e.innerText="Test",n.appendChild(e)}))})();

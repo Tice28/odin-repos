@@ -1,0 +1,50 @@
+body {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+header {
+    padding: 5px;
+    margin: 0 5px 0 5px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border-bottom: 1px solid grey;
+}
+
+main {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+#content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+#content > div {
+    border: 1px solid grey;
+    padding: 10px 5px;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px 0 5px;
+    text-align: center;
+    border-right: 1px solid grey;
+}
+
+.list-option{
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid grey;
+    margin-top: 30px;
+}
+
+
+
+
