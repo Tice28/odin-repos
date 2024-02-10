@@ -1,3 +1,8 @@
+/*
+currently unused imports
+import createTask from "./task";
+import storeTask from "./store";
+*/
 const todoBtn = document.getElementById('add-btn');
 const content = document.getElementById("content");
 
@@ -8,5 +13,5 @@ todoBtn.addEventListener("click" , () =>{
     const temp = document.createElement("div");
     temp.innerText = "Test";
     content.appendChild(temp);
-
+    
 })
