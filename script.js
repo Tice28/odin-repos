@@ -1,75 +1,92 @@
+// Linked List Factory
 
-//Iterative Approach to fib
-function fib(n){
-    let arr = [1,1];
-    if(n == 0){
-        return [1];
-    }
-    if(n == 1){
-        return [1,1];
-    }
-    while(n >= 2){
-        arr.push(arr[arr.length-1] + arr[arr.length-2]);
-        n--;
-    }
-    
-    return arr;
-}
+function createLinkedList(node = null){
+    let head = node;
+    let size = node != null ? 1 : 0;
 
-//Recursive Approach to fib
-function fibRecurse(target, current = 0 , arr = []){
-    if(current == target){
-        return arr;
-    }
-    if(current == 0 || current == 1){
-        arr.push(1)
-        return fibRecurse(target, current + 1, arr);
-    }
-    else{
-        arr.push(arr[current-1] + arr[current - 2])
-        return fibRecurse(target, current + 1, arr);
-    }
-}
-
-//Recursive Mergesort
-function mergeSort(arr){
-    if(arr.length == 1){
-        return arr
+    const getHead = () =>{
+        return head;
     }
 
-    let arr1 = arr.slice(0, arr.length/2);
-    let arr2 = arr.slice(arr.length/2, arr.length);
+    const getSize = () =>{
+        return size;
+    }
 
-    arr1 = mergeSort(arr1);
-    arr2 = mergeSort(arr2);
+    const incrementSize = () =>{
+        size++;
+    }
 
-    return merge(arr1, arr2);
-}
+    const decrementSize = () =>{
+        size--;
+    }
 
-//Inner merge function
-function merge(arr1, arr2){
-    let tempArr = [];
+    const prepend = (node) =>{
+        let temp = getHead();
+        head = node;
+        head.setNext(temp);
+        incrementSize();
+    }
 
-    while(arr1.length !== 0 && arr2.length !== 0){
-        if(arr1[0] < arr2[0]){
-            tempArr.push(arr1[0]);
-            arr1 = arr1.slice(1, arr1.length);
+    const append = (node) =>{
+        let temp = head;
+        let next = temp.hasNext();
+        while(next){
+            temp = temp.getNext();
+            next = temp.hasNext();
         }
-        else {
-            tempArr.push(arr2[0]);
-            arr2 = arr2.slice(1, arr2.length);
+        temp.setNext(node);
+        incrementSize();
+    }
+
+    return {
+        getHead,
+        getSize,
+        prepend,
+        append
+    }
+}
+
+//Node Factory
+
+function createNode(nodeVal="null", nodeNext="null"){
+    let val = nodeVal;
+    let next = nodeNext;
+
+    const getVal = () => {
+        return val;
+    }
+
+    const getNext = () => {
+        return next;
+    }
+
+    const setVal = (nodeVal) =>{
+        val = nodeVal;
+    }
+
+    const setNext = (nodeNext) =>{
+        next = nodeNext;
+    }
+
+    const hasNext = () =>{
+        if(next !== "null"){
+            return true;
+        } 
+        else{
+            return false;
         }
     }
 
-    while(arr1.length !== 0){
-        tempArr.push(arr1[0]);
-        arr1 = arr1.slice(1, arr1.length);
+    return {
+        getVal,
+        getNext,
+        setVal,
+        setNext,
+        hasNext
     }
-
-    while(arr2.length !== 0){
-        tempArr.push(arr2[0]);
-        arr2 = arr2.slice(1, arr2.length);
-    }
-
-    return tempArr;
 }
+
+const node = createNode(0);
+console.log(node.hasNext())
+const node2 = createNode(8);
+const linkedList = createLinkedList(node);
