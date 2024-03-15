@@ -79,10 +79,8 @@ function createLinkedList(node = null){
     const pop = () => {
         let temp = head;
         let val;
-        console.log(temp.getVal());
         while(temp.getNext().hasNext()){
             temp = temp.getNext();
-            console.log(temp.getVal());
         }
         
         val = temp.getNext();
@@ -139,6 +137,10 @@ function createLinkedList(node = null){
         let temp = head;
         let s = "";
         
+        if(getHead() == "null"){
+            return "";
+        }
+
         while(temp.hasNext()){
             s = s + (`(${temp.getVal()}) => `);
             temp = temp.getNext();
@@ -147,6 +149,72 @@ function createLinkedList(node = null){
         s = s + (`(${temp.getVal()}) => null`);
 
         return s;
+    }
+
+    const insertAt = (node, index) => {
+        if(index > getSize()+1 || index < 0 || index == undefined){
+            console.error("Error: bad index");
+            return null;
+        }
+        if(node == undefined){
+            console.error("Error: invalid node");
+            return null;
+        }
+        else{
+            if(index == 0){
+                prepend(node);
+                incrementSize();
+                return true;
+            }
+            if(index == getSize()){
+                append(node);
+                incrementSize();
+                return true;
+            }
+            
+            let i = 0;
+            let temp = head;
+
+            while(i < index-1){
+                temp = temp.getNext();
+                i++;
+            }
+
+            node.setNext(temp.getNext());
+            temp.setNext(node);
+            incrementSize();
+
+            return true;
+        }
+    }
+
+    const removeAt = (index) => {
+        if(index > getSize() -1 || index < 0 || index == undefined){
+            console.error("Error: bad index");
+            return null;
+        }
+        else{
+            if(index == 0){
+                head = head.getNext();
+                decrementSize();
+                return true;
+            }
+
+            if(index == getSize() - 1){
+                pop();
+                return true;
+            }
+
+            let i = 0;
+            let temp = head;
+            while(i < index - 1){
+                temp = head.getNext();
+                i++;
+            }
+            temp.setNext(temp.getNext().getNext());
+            decrementSize();
+            return true;
+        }
     }
 
     return {
@@ -159,7 +227,9 @@ function createLinkedList(node = null){
         pop,
         contains,
         find,
-        toString
+        toString,
+        insertAt,
+        removeAt
     }
 }
 
@@ -202,13 +272,3 @@ function createNode(nodeVal="null", nodeNext="null"){
         hasNext
     }
 }
-
-const node = createNode(0);
-const node2 = createNode(8);
-const node3 = createNode(3);
-const node4 = createNode(5);
-//5 0 3 8
-const linkedList = createLinkedList(node);
-linkedList.append(node3);
-linkedList.append(node2);
-linkedList.prepend(node4);
