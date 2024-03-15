@@ -21,6 +21,11 @@ function createLinkedList(node = null){
     }
 
     const prepend = (node) =>{
+        if(node == undefined){
+            console.error("Error: invalid node");
+            return;
+        }
+
         let temp = getHead();
         head = node;
         head.setNext(temp);
@@ -28,6 +33,11 @@ function createLinkedList(node = null){
     }
 
     const append = (node) =>{
+        if(node == undefined){
+            console.error("Error: invalid node");
+            return;
+        }
+
         let temp = head;
         let next = temp.hasNext();
         while(next){
@@ -49,8 +59,8 @@ function createLinkedList(node = null){
     }
 
     const at = (index) => {
-        if(index > getSize() - 1){
-            console.error("Bad index");
+        if(index > getSize() - 1 || index < 0 || index == undefined){
+            console.error("Error: bad index");
             return null;
         }
         else{
@@ -77,7 +87,66 @@ function createLinkedList(node = null){
         
         val = temp.getNext();
         temp.setNext();
+        decrementSize();
         return val;
+    }
+
+    const contains = (value) => {
+        if(value == undefined){
+            console.error("Error: no argument listed");
+            return null;
+        }
+
+        let temp = head;
+        while(temp.hasNext()){
+            if(temp.getVal() == value){
+                return true;
+            }
+            temp = temp.getNext();
+        }
+        if(temp == getTail()){
+            if(temp.getVal() == value){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    const find = (value) => {
+        if(value == undefined){
+            console.error("Error: no argument listed");
+            return null;
+        }
+        
+        let i = 0;
+        let temp = head;
+    
+        while(temp.getVal() != value && temp.hasNext()){
+            temp = temp.getNext();
+            i++;
+        }
+        if(temp.getVal() == value){
+            return i;
+        }
+        else{
+            return null;
+        }
+        
+    }
+
+    const toString = () => {
+        let temp = head;
+        let s = "";
+        
+        while(temp.hasNext()){
+            s = s + (`(${temp.getVal()}) => `);
+            temp = temp.getNext();
+            
+        }
+        s = s + (`(${temp.getVal()}) => null`);
+
+        return s;
     }
 
     return {
@@ -87,7 +156,10 @@ function createLinkedList(node = null){
         append,
         getTail,
         at,
-        pop
+        pop,
+        contains,
+        find,
+        toString
     }
 }
 
