@@ -1,274 +1,151 @@
-// Linked List Factory
+/*Artificial Limitation
+if (index < 0 || index >= buckets.length) {
+    throw new Error("Trying to access index out of bound");
+  }
+*/
 
-function createLinkedList(node = null){
-    let head = node;
-    let size = node != null ? 1 : 0;
+/*
+TODO: 
+- Make Load Factor
+- Dynamic growth based on load factor
+- Check hash at different array sizes for collisions
+*/
 
-    const getHead = () =>{
-        return head;
+  function createHashMap(){
+    let size = 16;
+    let length = 0;
+    const arr = {};
+
+    const getLength = () => {
+        return length;
     }
 
-    const getSize = () =>{
-        return size;
+    const incLength = () => {
+        length++;
     }
 
-    const incrementSize = () =>{
-        size++;
+    const decLength = () => {
+        length--;
     }
 
-    const decrementSize = () =>{
-        size--;
-    }
-
-    const prepend = (node) =>{
-        if(node == undefined){
-            console.error("Error: invalid node");
-            return;
-        }
-
-        let temp = getHead();
-        head = node;
-        head.setNext(temp);
-        incrementSize();
-    }
-
-    const append = (node) =>{
-        if(node == undefined){
-            console.error("Error: invalid node");
-            return;
-        }
-
-        let temp = head;
-        let next = temp.hasNext();
-        while(next){
-            temp = temp.getNext();
-            next = temp.hasNext();
-        }
-        temp.setNext(node);
-        incrementSize();
-    }
-
-    const getTail = () => {
-        let temp = head;
-        let next = temp.hasNext();
-        while(next){
-            temp = temp.getNext();
-            next = temp.hasNext();
-        }
-        return temp;
-    }
-
-    const at = (index) => {
-        if(index > getSize() - 1 || index < 0 || index == undefined){
-            console.error("Error: bad index");
-            return null;
-        }
+    const set = (key, value) => {
+        let index = hash(key) % size;
+        
+        if (index < 0 || index >= size) {
+            throw new Error("Trying to access index out of bound");
+          }
         else{
-            let i = 0;
-            let temp = head;
-    
-            while(i < index){
-                temp = temp.getNext();
-                i = i+1;
+            if(arr[index]){
+                arr[index] = {key, value};
             }
-    
-            return temp;
+            else {
+                incLength();
+                arr[index] = {key, value};
+            }
         }
     }
 
-    const pop = () => {
-        let temp = head;
-        let val;
-        while(temp.getNext().hasNext()){
-            temp = temp.getNext();
+    const get = (key) => {
+        let index = hash(key) % size;
+
+        try{
+            return arr[index].value;
         }
-        
-        val = temp.getNext();
-        temp.setNext();
-        decrementSize();
-        return val;
+        catch(e){
+            return null;
+        }
     }
 
-    const contains = (value) => {
-        if(value == undefined){
-            console.error("Error: no argument listed");
-            return null;
-        }
-
-        let temp = head;
-        while(temp.hasNext()){
-            if(temp.getVal() == value){
-                return true;
-            }
-            temp = temp.getNext();
-        }
-        if(temp == getTail()){
-            if(temp.getVal() == value){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    const find = (value) => {
-        if(value == undefined){
-            console.error("Error: no argument listed");
-            return null;
-        }
-        
-        let i = 0;
-        let temp = head;
-    
-        while(temp.getVal() != value && temp.hasNext()){
-            temp = temp.getNext();
-            i++;
-        }
-        if(temp.getVal() == value){
-            return i;
-        }
-        else{
-            return null;
-        }
-        
-    }
-
-    const toString = () => {
-        let temp = head;
-        let s = "";
-        
-        if(getHead() == "null"){
-            return "";
-        }
-
-        while(temp.hasNext()){
-            s = s + (`(${temp.getVal()}) => `);
-            temp = temp.getNext();
-            
-        }
-        s = s + (`(${temp.getVal()}) => null`);
-
-        return s;
-    }
-
-    const insertAt = (node, index) => {
-        if(index > getSize()+1 || index < 0 || index == undefined){
-            console.error("Error: bad index");
-            return null;
-        }
-        if(node == undefined){
-            console.error("Error: invalid node");
-            return null;
-        }
-        else{
-            if(index == 0){
-                prepend(node);
-                incrementSize();
-                return true;
-            }
-            if(index == getSize()){
-                append(node);
-                incrementSize();
-                return true;
-            }
-            
-            let i = 0;
-            let temp = head;
-
-            while(i < index-1){
-                temp = temp.getNext();
-                i++;
-            }
-
-            node.setNext(temp.getNext());
-            temp.setNext(node);
-            incrementSize();
-
+    const has = (key) => {
+        let index = hash(key) % size;
+        if(arr[index]){
             return true;
         }
-    }
-
-    const removeAt = (index) => {
-        if(index > getSize() -1 || index < 0 || index == undefined){
-            console.error("Error: bad index");
-            return null;
-        }
-        else{
-            if(index == 0){
-                head = head.getNext();
-                decrementSize();
-                return true;
-            }
-
-            if(index == getSize() - 1){
-                pop();
-                return true;
-            }
-
-            let i = 0;
-            let temp = head;
-            while(i < index - 1){
-                temp = head.getNext();
-                i++;
-            }
-            temp.setNext(temp.getNext().getNext());
-            decrementSize();
-            return true;
-        }
-    }
-
-    return {
-        getHead,
-        getSize,
-        prepend,
-        append,
-        getTail,
-        at,
-        pop,
-        contains,
-        find,
-        toString,
-        insertAt,
-        removeAt
-    }
-}
-
-//Node Factory
-
-function createNode(nodeVal="null", nodeNext="null"){
-    let val = nodeVal;
-    let next = nodeNext;
-
-    const getVal = () => {
-        return val;
-    }
-
-    const getNext = () => {
-        return next;
-    }
-
-    const setVal = (nodeVal) =>{
-        val = nodeVal;
-    }
-
-    const setNext = (nodeNext="null") =>{
-        next = nodeNext;
-    }
-
-    const hasNext = () =>{
-        if(next !== "null"){
-            return true;
-        } 
         else{
             return false;
         }
     }
 
-    return {
-        getVal,
-        getNext,
-        setVal,
-        setNext,
-        hasNext
+    const remove = (key) => {
+        let index = hash(key) % size;
+
+        delete arr[index]
+        decLength();
     }
-}
+
+    const clear = () => {
+        for (var key in arr){
+            if (arr.hasOwnProperty(key)){
+                delete arr[key];
+            }
+        }
+
+        size = 16;
+        length = 0;
+    }
+
+    const keys = () => {
+        let keyArr = [];
+
+        for(var key in arr){
+            keyArr.push(arr[key].key);
+        }
+
+        return keyArr;
+    }
+
+    const values = () => {
+        let valArr = [];
+
+        for(var key in arr){
+            valArr.push(arr[key].value);
+        }
+
+        return valArr;
+    }
+
+    const entries = () => {
+        let entries = [];
+
+        for(var key in arr){
+            entries.push(arr[key]);
+        }
+
+        return entries;
+    }
+
+    const hash = (key) => {
+        let hashCode = 0;
+           
+        const primeNumber = 31;
+        for (let i = 0; i < key.length; i++) {
+          hashCode = primeNumber * hashCode + key.charCodeAt(i);
+        }
+     
+        return hashCode;
+      } 
+     
+
+    return {
+        set,
+        get,
+        has,
+        remove,
+        clear,
+        keys,
+        values,
+        entries,
+        getLength
+    }
+  }
+
+const hm = createHashMap();
+hm.set("test", 1);
+hm.set("tesv334",2);
+
+console.log(hm.get("test"));
+console.log(hm.get("tesv334"));
+
+console.log(hm.keys())
+console.log(hm.values());
+console.log(hm.entries())
